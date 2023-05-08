@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: imageGrp
+application:
+  security:
+    jwt:
+      secret-key:
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+imgur:
+  image:
+    upload:
+      url: https://api.imgur.com/3/image
+      clientId:
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.synchrony: ERROR
+    org.hibernate: ERROR
+
